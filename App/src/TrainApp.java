@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -42,5 +43,16 @@ public class TrainApp {
         for (String bogie : consist) {
             System.out.println(bogie);
         }
+
+        LinkedHashSet<String> formation = new LinkedHashSet<>();
+
+        formation.add("Engine");
+        formation.add("Sleeper");
+        formation.add("Cargo");
+        formation.add("Guard");
+        formation.add("Sleeper");
+
+        System.out.println("Final Formation Order:");
+        System.out.println(formation);
     }
 }
