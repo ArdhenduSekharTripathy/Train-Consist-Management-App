@@ -1,9 +1,21 @@
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashSet;
-import java.util.LinkedList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
+
+class Bogie {
+    String name;
+    int capacity;
+
+    Bogie(String name, int capacity) {
+        this.name = name;
+        this.capacity = capacity;
+    }
+
+    @Override
+    public String toString() {
+        return name + " - " + capacity;
+    }
+}
 
 public class TrainApp {
 
@@ -11,61 +23,22 @@ public class TrainApp {
 
         System.out.println("=== Train Consist Management App ===");
 
-        List<String> passengerBogies = new ArrayList<>();
+        List<Bogie> bogies = new ArrayList<>();
 
-        passengerBogies.add("Sleeper");
-        passengerBogies.add("AC Chair");
-        passengerBogies.add("First Class");
+        bogies.add(new Bogie("Sleeper", 72));
+        bogies.add(new Bogie("AC Chair", 56));
+        bogies.add(new Bogie("First Class", 24));
 
-        System.out.println("Passenger Bogies: " + passengerBogies);
-
-        passengerBogies.remove("AC Chair");
-
-        System.out.println("After Removal: " + passengerBogies);
-
-        boolean exists = passengerBogies.contains("Sleeper");
-        System.out.println("Sleeper exists: " + exists);
-
-        System.out.println("Final Bogie List: " + passengerBogies);
-
-        LinkedList<String> consist = new LinkedList<>();
-
-        consist.add("Engine");
-        consist.add("Sleeper");
-        consist.add("AC");
-        consist.add("Cargo");
-        consist.add("Guard");
-
-        consist.add(2, "Pantry");
-
-        consist.removeFirst();
-        consist.removeLast();
-
-        System.out.println("Final Train Consist:");
-        for (String bogie : consist) {
-            System.out.println(bogie);
+        System.out.println("Before Sorting:");
+        for (Bogie b : bogies) {
+            System.out.println(b);
         }
 
-        LinkedHashSet<String> formation = new LinkedHashSet<>();
+        bogies.sort(Comparator.comparingInt(b -> b.capacity));
 
-        formation.add("Engine");
-        formation.add("Sleeper");
-        formation.add("Cargo");
-        formation.add("Guard");
-        formation.add("Sleeper");
-
-        System.out.println("Final Formation Order:");
-        System.out.println(formation);
-
-        HashMap<String, Integer> bogieCapacity = new HashMap<>();
-
-        bogieCapacity.put("Sleeper", 72);
-        bogieCapacity.put("AC Chair", 78);
-        bogieCapacity.put("First Class", 24);
-
-        System.out.println("Bogie Capacity Details:");
-        for (Map.Entry<String, Integer> entry : bogieCapacity.entrySet()) {
-            System.out.println(entry.getKey() + " : " + entry.getValue());
+        System.out.println("After Sorting by Capacity:");
+        for (Bogie b : bogies) {
+            System.out.println(b);
         }
     }
 }
