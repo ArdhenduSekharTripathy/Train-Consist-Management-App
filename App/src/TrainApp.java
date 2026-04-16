@@ -1,20 +1,46 @@
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class TrainApp {
+
     public static void main(String[] args) {
-        Set<String> bogieIds = new HashSet<>();
 
-        bogieIds.add("BG101");
-        bogieIds.add("BG102");
-        bogieIds.add("BG103");
-        bogieIds.add("BG101");
-        bogieIds.add("BG104");
-        bogieIds.add("BG102");
+        System.out.println("=== Train Consist Management App ===");
 
-        System.out.println("Unique Bogie IDs:");
-        for (String id : bogieIds) {
-            System.out.println(id);
+        List<String> passengerBogies = new ArrayList<>();
+
+        passengerBogies.add("Sleeper");
+        passengerBogies.add("AC Chair");
+        passengerBogies.add("First Class");
+
+        System.out.println("Passenger Bogies: " + passengerBogies);
+
+        passengerBogies.remove("AC Chair");
+
+        System.out.println("After Removal: " + passengerBogies);
+
+        boolean exists = passengerBogies.contains("Sleeper");
+        System.out.println("Sleeper exists: " + exists);
+
+        System.out.println("Final Bogie List: " + passengerBogies);
+
+        LinkedList<String> consist = new LinkedList<>();
+
+        consist.add("Engine");
+        consist.add("Sleeper");
+        consist.add("AC");
+        consist.add("Cargo");
+        consist.add("Guard");
+
+        consist.add(2, "Pantry");
+
+        consist.removeFirst();
+        consist.removeLast();
+
+        System.out.println("Final Train Consist:");
+        for (String bogie : consist) {
+            System.out.println(bogie);
         }
     }
 }
